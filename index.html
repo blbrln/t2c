@@ -110,7 +110,7 @@
 
 <script>
 (function () {
-  var DEFAULTS = { zoom: 0.75, aspect: 1.0, src: "https://tespush.com/", gear: 1 };
+  var DEFAULTS = { zoom: 0.7, aspect: 1.0, src: "https://tespush.com/", gear: 1 };
   var ZOOM_MIN = 0.4, ZOOM_MAX = 2.2, ZOOM_STEP = 0.05;
   var ASP_MIN = 0.6, ASP_MAX = 1.6, ASP_STEP = 0.02;
 
@@ -129,7 +129,7 @@
   // ---- load settings: URL first, then saved, then defaults ----
   var s = Object.assign({}, DEFAULTS);
   try {
-    var saved = JSON.parse(localStorage.getItem("carplayFit3") || "null");
+    var saved = JSON.parse(localStorage.getItem("carplayFit4") || "null");
     if (saved) Object.assign(s, saved);
   } catch (e) {}
   var q = new URLSearchParams(location.search);
@@ -141,7 +141,7 @@
   s.aspect = clamp(s.aspect, ASP_MIN, ASP_MAX);
 
   function save() {
-    try { localStorage.setItem("carplayFit3", JSON.stringify(s)); } catch (e) {}
+    try { localStorage.setItem("carplayFit4", JSON.stringify(s)); } catch (e) {}
     var p = new URLSearchParams();
     p.set("zoom", round(s.zoom));
     p.set("aspect", round(s.aspect));
