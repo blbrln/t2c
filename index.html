@@ -64,7 +64,7 @@
 </style>
 </head>
 <body>
-<div id="stage"><iframe id="cp" allow="autoplay; fullscreen" referrerpolicy="no-referrer"></iframe></div>
+<div id="stage"><iframe id="cp" allow="autoplay; fullscreen"></iframe></div>
 
 <button id="gear" aria-label="Settings">⚙︎</button>
 
@@ -99,16 +99,17 @@
 
   <div class="label" style="font-size:17px">Adapter address</div>
   <div class="seg" id="srcSeg" style="margin-top:8px">
-    <button class="b" data-src="http://tespush.com/">tespush.com</button>
-    <button class="b" data-src="http://101.200.208.6/">101.200.208.6</button>
+    <button class="b" data-src="https://tespush.com/">tespush.com (https)</button>
+    <button class="b" data-src="https://101.200.208.6/">IP (https)</button>
+    <button class="b" data-src="http://101.200.208.6/">IP (http)</button>
   </div>
   <input type="text" id="srcInput" spellcheck="false" autocomplete="off" aria-label="Custom adapter address">
-  <p class="hint">Use whichever address normally opens CarPlay in your car.</p>
+  <p class="hint">Start with tespush.com (https). If it stays black, try the next one and press Reconnect.</p>
 </div>
 
 <script>
 (function () {
-  var DEFAULTS = { zoom: 1.25, aspect: 1.0, src: "http://tespush.com/", gear: 1 };
+  var DEFAULTS = { zoom: 1.25, aspect: 1.0, src: "https://tespush.com/", gear: 1 };
   var ZOOM_MIN = 0.8, ZOOM_MAX = 2.2, ZOOM_STEP = 0.05;
   var ASP_MIN = 0.6, ASP_MAX = 1.6, ASP_STEP = 0.02;
 
@@ -127,7 +128,7 @@
   // ---- load settings: URL first, then saved, then defaults ----
   var s = Object.assign({}, DEFAULTS);
   try {
-    var saved = JSON.parse(localStorage.getItem("carplayFit") || "null");
+    var saved = JSON.parse(localStorage.getItem("carplayFit2") || "null");
     if (saved) Object.assign(s, saved);
   } catch (e) {}
   var q = new URLSearchParams(location.search);
@@ -139,7 +140,7 @@
   s.aspect = clamp(s.aspect, ASP_MIN, ASP_MAX);
 
   function save() {
-    try { localStorage.setItem("carplayFit", JSON.stringify(s)); } catch (e) {}
+    try { localStorage.setItem("carplayFit2", JSON.stringify(s)); } catch (e) {}
     var p = new URLSearchParams();
     p.set("zoom", round(s.zoom));
     p.set("aspect", round(s.aspect));
@@ -201,7 +202,7 @@
   srcInput.addEventListener("change", function () {
     var v = srcInput.value.trim();
     if (!v) return;
-    if (!/^https?:\/\//i.test(v)) v = "http://" + v;
+    if (!/^https?:\/\//i.test(v)) v = "https://" + v;
     s.src = v; save(); layout(); loadFrame();
   });
 
