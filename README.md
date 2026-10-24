@@ -1,10 +1,10 @@
-# Carlinkit T2C Ultimate Wrapper
+# Carlinkit T2C Ultimate Wrapper by BLUEBERLIN
 
 Fixes the cropped or stretched CarPlay picture of the **Carlinkit T2C** adapter in the Tesla browser.
 
 Other wrappers make the full screen visible by squashing it, so icons look stretched and the picture loses sharpness. This one keeps the original proportions, and at the default setting it shrinks the picture rather than enlarging it, so it stays sharp.
 
-![Before and after](screenshots/00-before-after.jpg)
+![Carlinkit T2C Ultimate Wrapper - Screenshot](Carlinkit%20T2C%20Ultimate%20Wrapper%20-%20screenshot.png)
 
 ## How to use
 
@@ -24,8 +24,6 @@ Tap **⚙︎** in the top-left corner (while parked):
 - **Reconnect**: reloads the CarPlay stream.
 
 Defaults (70% / 100%) are tested on a 2021 Model 3. Your settings are saved in the link, so bookmark the page after adjusting.
-
-![Settings panel](screenshots/03-settings.jpg)
 
 ## Troubleshooting
 
